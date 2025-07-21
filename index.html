@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV - Middle Frontend Developer</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>CV - Frontend Developer</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
@@ -13,6 +12,499 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: #2c3e50;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .container::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+      }
+
+      /* Header Styles */
+      .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .profile-info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .name-title h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .name-title h2 {
+        font-size: 1.2rem;
+        font-weight: 400;
+        opacity: 0.9;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 0.95rem;
+      }
+
+      .contact-item i {
+        width: 20px;
+        text-align: center;
+      }
+
+      .contact-info a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      .contact-info a:hover {
+        color: #667eea;
+        text-decoration: underline;
+      }
+
+      /* Section Styles */
+      .section {
+        padding: 40px;
+        border-bottom: 1px solid #e8ecf0;
+      }
+
+      .section:last-child {
+        border-bottom: none;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 24px;
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        flex: 1;
+        height: 2px;
+        background: linear-gradient(90deg, #667eea, transparent);
+        margin-left: 20px;
+      }
+
+      .section-title i {
+        color: #667eea;
+        font-size: 1.2rem;
+      }
+
+      .summary {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #4a5568;
+        text-align: justify;
+      }
+
+      /* Skills Styles */
+      .skills-grid {
+        display: flex;
+        gap: 24px;
+        justify-content: space-between;
+      }
+      .skill-category {
+        flex: 1 1 0;
+        min-width: 0;
+        background: #f8fafc;
+        padding: 24px;
+        border-radius: 12px;
+        border-left: 4px solid #667eea;
+      }
+
+      .skill-category h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #2c3e50;
+      }
+
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .skill-tag {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        transition: transform 0.2s ease;
+      }
+
+      .skill-tag:hover {
+        transform: translateY(-2px);
+      }
+
+      /* Timeline Styles */
+      .timeline {
+        position: relative;
+        padding-left: 30px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, #667eea, #764ba2);
+      }
+
+      .timeline-item {
+        position: relative;
+        margin-bottom: 32px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -26px;
+        top: 20px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #667eea;
+        border: 3px solid white;
+        box-shadow: 0 0 0 3px #667eea;
+      }
+
+      .timeline-header {
+        background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+        padding: 20px 24px;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .timeline-header h4 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 4px;
+      }
+
+      .company {
+        font-size: 1.1rem;
+        color: #667eea;
+        font-weight: 500;
+      }
+
+      .period {
+        font-size: 0.95rem;
+        color: #64748b;
+        float: right;
+        font-weight: 500;
+      }
+
+      .company-desc {
+        padding: 16px 24px;
+        color: #64748b;
+        font-style: italic;
+        background: #fafafa;
+        border-left: 3px solid #667eea;
+        margin: 0;
+      }
+
+      /* Project Styles */
+      .projects-experience {
+        padding: 24px;
+      }
+
+      .projects-experience h5 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 24px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .projects-experience h5::before {
+        content: "🚀";
+        font-size: 1.1rem;
+      }
+
+      .project-item {
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 24px;
+        margin-bottom: 24px;
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .project-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        border-color: #667eea;
+      }
+
+      .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .project-header h6 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin: 0;
+      }
+
+      .project-duration {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .project-role,
+      .project-tech {
+        margin-bottom: 12px;
+        font-size: 0.95rem;
+      }
+
+      .project-role strong,
+      .project-tech strong {
+        color: #667eea;
+        font-weight: 600;
+      }
+
+      .project-desc {
+        margin-bottom: 16px;
+      }
+
+      .project-desc p {
+        color: #4a5568;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      .project-responsibilities {
+        margin-bottom: 16px;
+      }
+
+      .project-responsibilities strong {
+        color: #667eea;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .project-responsibilities ul {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .project-responsibilities li {
+        padding-left: 20px;
+        margin-bottom: 6px;
+        position: relative;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        color: #4a5568;
+      }
+
+      .project-responsibilities li::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-weight: bold;
+      }
+
+      .project-impact {
+        background: linear-gradient(135deg, #e6fffa, #f0fff4);
+        padding: 16px;
+        border-radius: 8px;
+        border-left: 3px solid #48bb78;
+        margin-top: 16px;
+      }
+
+      .project-impact strong {
+        color: #2d7d32;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .project-link {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 8px;
+        transition: color 0.2s ease;
+      }
+
+      .project-link:hover {
+        color: #764ba2;
+        text-decoration: underline;
+      }
+
+      /* Education Styles */
+      .education-item {
+        background: #f8fafc;
+        padding: 24px;
+        border-radius: 12px;
+        border-left: 4px solid #667eea;
+      }
+
+      .education-item h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 8px;
+      }
+
+      .school {
+        color: #667eea;
+        font-weight: 500;
+        margin-right: 12px;
+      }
+
+      .period {
+        color: #64748b;
+        font-size: 0.95rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        body {
+          padding: 10px;
+        }
+
+        .header {
+          flex-direction: column;
+          text-align: center;
+          padding: 30px 20px;
+        }
+
+        .name-title h1 {
+          font-size: 2rem;
+        }
+
+        .section {
+          padding: 30px 20px;
+        }
+
+        .skills-grid {
+          flex-direction: row;
+          gap: 12px;
+        }
+        .skill-category {
+          padding: 12px;
+          font-size: 0.95rem;
+        }
+
+        .timeline {
+          padding-left: 20px;
+        }
+
+        .project-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+        }
+
+        .container {
+          box-shadow: none;
+          border-radius: 0;
+        }
+
+        .project-item:hover {
+          transform: none;
+          box-shadow: none;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -24,17 +516,19 @@
           </div>
           <div class="name-title">
             <h1>Nguyễn Quốc Bảo</h1>
-            <h2>Frontend Developer</h2>
+            <h2>Lập trình viên Frontend</h2>
           </div>
         </div>
         <div class="contact-info">
           <div class="contact-item">
             <i class="fas fa-envelope"></i>
-            <span>nqbbao199607@gmail.com</span>
+            <a href="mailto:nqbbao199607@gmail.com">nqbbao199607@gmail.com</a>
           </div>
           <div class="contact-item">
             <i class="fas fa-phone"></i>
-            <span>+84 968871596</span>
+            <a href="https://zalo.me/84968871596" target="_blank"
+              >+84 968871596</a
+            >
           </div>
           <div class="contact-item">
             <i class="fas fa-map-marker-alt"></i>
@@ -43,22 +537,22 @@
         </div>
       </header>
 
-      <!-- Summary Section -->
+      <!-- Tóm tắt -->
       <section class="section">
         <h3 class="section-title">
           <i class="fas fa-user-tie"></i>
           Tóm tắt
         </h3>
         <p class="summary">
-          Frontend Developer với 2+ năm kinh nghiệm trong việc phát triển ứng
-          dụng web responsive và hiệu suất cao. Thành thạo React, Next.js,
-          TypeScript và các công nghệ frontend hiện đại. Có kinh nghiệm làm việc
-          với REST APIs, GraphQL, state management. Luôn cập nhật xu hướng công
-          nghệ mới và đam mê tạo ra trải nghiệm người dùng tốt nhất.
+          Lập trình viên Frontend với hơn 3 năm kinh nghiệm phát triển ứng dụng
+          web responsive, hiệu suất cao. Thành thạo các công nghệ hiện đại như
+          React, Next.js, TypeScript. Có kinh nghiệm làm việc với REST API,
+          GraphQL, quản lý trạng thái ứng dụng. Luôn cập nhật xu hướng công nghệ
+          mới và đam mê xây dựng trải nghiệm người dùng tối ưu.
         </p>
       </section>
 
-      <!-- Skills Section -->
+      <!-- Kỹ năng kỹ thuật -->
       <section class="section">
         <h3 class="section-title">
           <i class="fas fa-code"></i>
@@ -71,12 +565,11 @@
               <span class="skill-tag">React.js</span>
               <span class="skill-tag">TypeScript</span>
               <span class="skill-tag">Sass/SCSS</span>
-              <span class="skill-tag">Tailwind CSS</span>
               <span class="skill-tag">Next.js</span>
             </div>
           </div>
           <div class="skill-category">
-            <h4>State Management</h4>
+            <h4>Quản lý trạng thái</h4>
             <div class="skill-tags">
               <span class="skill-tag">Tanstack Query</span>
               <span class="skill-tag">Jotai</span>
@@ -85,7 +578,7 @@
             </div>
           </div>
           <div class="skill-category">
-            <h4>Tools & Others</h4>
+            <h4>Công cụ & Khác</h4>
             <div class="skill-tags">
               <span class="skill-tag">REST API</span>
               <span class="skill-tag">GraphQL</span>
@@ -97,7 +590,7 @@
         </div>
       </section>
 
-      <!-- Experience Section -->
+      <!-- Kinh nghiệm làm việc -->
       <section class="section">
         <h3 class="section-title">
           <i class="fas fa-briefcase"></i>
@@ -106,7 +599,7 @@
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-header">
-              <h4>Frontend Developer</h4>
+              <h4>Lập trình viên Frontend</h4>
               <span class="company">TGL Solution</span>
               <span class="period">2022 - 2024 (2 năm)</span>
             </div>
@@ -114,105 +607,121 @@
               Công ty outsourcing cho thị trường Nhật Bản
             </p>
             <div class="projects-experience">
-              <h5>Dự án tham gia:</h5>
-              <ul class="achievements">
-                <li>
-                  <strong>Hệ thống quản trị doanh nghiệp Wookbee</strong> (1.5
-                  năm) - Product của công ty
-                  <ul class="sub-achievements">
+              <h5>Dự án tiêu biểu:</h5>
+              <div class="project-item">
+                <div class="project-header">
+                  <h6>🏆 Hệ thống quản trị doanh nghiệp Wookbee</h6>
+                  <span class="project-duration">2 năm</span>
+                </div>
+                <div class="project-role">
+                  <strong>Vai trò:</strong> Key member, nắm toàn bộ logic nghiệp
+                  vụ và kỹ thuật mảng frontend
+                </div>
+                <div class="project-tech">
+                  <strong>Công nghệ:</strong> React, TypeScript, Redux, GraphQL,
+                  SCSS Pattern 7-1
+                </div>
+                <div class="project-desc">
+                  <p>
+                    Sản phẩm chủ lực của công ty, hệ thống ERP phục vụ quản trị
+                    doanh nghiệp.
+                  </p>
+                </div>
+                <div class="project-responsibilities">
+                  <strong>Nhiệm vụ chính:</strong>
+                  <ul>
+                    <li>Maintain và phát triển toàn bộ kiến trúc frontend</li>
                     <li>
-                      Vai trò: Key member trong dự án, PIC Frontend cho một số
-                      module
+                      PIC Frontend cho 4 module: CRM (Quản lý khách hàng),
+                      SpeedFlow (quản lý đơn từ, quy trình công ty), Asset
+                      management (quản lý tài sản công ty), Chấm công
                     </li>
-                    <li>Phát triển giao diện quản trị doanh nghiệp</li>
+                    <li>Triển khai tích hợp OAuth2 giữa các module</li>
+                  </ul>
+                </div>
+                <div class="project-impact">
+                  <strong>Thành tựu:</strong> Sản phẩm đạt giải thưởng Sao Khuê
+                  3 năm liên tiếp
+                  <a
+                    href="https://work-bee.net/vi"
+                    target="_blank"
+                    class="project-link"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Xem thêm
+                  </a>
+                </div>
+              </div>
+
+              <div class="project-item">
+                <div class="project-header">
+                  <h6>🎓E-learning</h6>
+                  <span class="project-duration">4 tháng</span>
+                </div>
+                <div class="project-role">
+                  <strong>Vai trò:</strong> PIC Frontend & tối ưu hiệu năng
+                </div>
+                <div class="project-tech">
+                  <strong>Công nghệ:</strong> Next.js, TypeScript, Redux,
+                  TanStack Query
+                </div>
+                <div class="project-desc">
+                  <p>
+                    Nền tảng học tập trực tuyến tích hợp video tương tác và kiểm
+                    tra đánh giá.
+                  </p>
+                </div>
+                <div class="project-responsibilities">
+                  <strong>Tính năng chính:</strong>
+                  <ul>
+                    <li>Video player tích hợp quiz</li>
+                    <li>Theo dõi tiến độ học tập</li>
                     <li>
-                      Implement các tính năng quản lý nhân sự, chấm công, báo
-                      cáo, khách hàng - dự án, phát triển nhân sự, OAuth2 giữa
-                      các module...
+                      Xử lý caching với TanStack Query, tối ưu hiệu năng giúp
+                      đảm bảo lượt truy cập có thể lên đến 500+ người dùng đồng
+                      thời
                     </li>
                   </ul>
-                </li>
-                <li>
-                  <strong>Dự án quản lý hóa đơn điện Model-T</strong>
-                  <ul class="sub-achievements">
-                    <li>Vai trò: PIC Frontend</li>
-                    <li>Xây dựng hệ thống quản lý hóa đơn điện online</li>
+                </div>
+              </div>
+
+              <div class="project-item">
+                <div class="project-header">
+                  <h6>📊 Hệ thống quản lý hóa đơn điện Model-T</h6>
+                  <span class="project-duration">6 tháng</span>
+                </div>
+                <div class="project-role">
+                  <strong>Vai trò:</strong> PIC Frontend
+                </div>
+                <div class="project-tech">
+                  <strong>Công nghệ:</strong> React, Ant Design, Recharts
+                </div>
+                <div class="project-desc">
+                  <p>
+                    Hệ thống quản lý và cung cấp hóa đơn điện online với khả
+                    năng xử lý dữ liệu lớn và trực quan hóa số liệu.
+                  </p>
+                </div>
+                <div class="project-responsibilities">
+                  <strong>Giải pháp kỹ thuật:</strong>
+                  <ul>
                     <li>
-                      Build source, lựa chọn thư viện, phân chia task, quản lý
-                      tiến độ, tích hợp API và xử lý dữ liệu thành chart, hóa
-                      đơn
+                      Thiết kế kiến trúc frontend tối ưu cho dữ liệu lớn, tối ưu
+                      hóa caching giảm tải request lên server
                     </li>
+                    <li>Trực quan hóa dữ liệu với Recharts</li>
                   </ul>
-                </li>
-                <li>
-                  <strong>Dự án E-learning</strong>
-                  <ul class="sub-achievements">
-                    <li>Vai trò: PIC Frontend</li>
-                    <li>
-                      Xây dựng trang web học tập với video tích hợp câu hỏi
-                      quiz, chức năng kiểm tra, chấm điểm và cấp bằng
-                    </li>
-                    <li>
-                      Build source, phân chia task, quản lý tiến độ task, tích
-                      hợp API và xử lý dữ liệu
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <strong>Dự án quản lý chấm công công trường</strong>
-                  <ul class="sub-achievements">
-                    <li>Vai trò: Frontend Developer</li>
-                    <li>Phát triển ứng dụng chấm công cho công nhân</li>
-                    <li>
-                      Xây dựng hệ thống báo cáo và kiểm duyệt cho nội bộ công ty
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+                </div>
+                <div class="project-impact">
+                  <strong>Kết quả:</strong> Khách hàng mở rộng từ Phase 1 đến
+                  Phase 3 và vẫn đang tiếp tục phát triển hợp tác với công ty
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Projects Section -->
-      <section class="section">
-        <h3 class="section-title">
-          <i class="fas fa-project-diagram"></i>
-          Dự án nổi bật
-        </h3>
-        <div class="projects-grid">
-          <div class="project-card">
-            <h4>E-Learning</h4>
-            <p class="project-tech">
-              Next.js, TypeScript, Redux, Tanstack Query
-            </p>
-            <p class="project-desc">
-              Xây dựng trang web học tập với tích hợp video, kiểm tra, chấm điểm
-              với khả năng hỗ trợ 500+ người dùng đồng thời
-            </p>
-          </div>
-          <div class="project-card">
-            <h4>Hệ thống quản trị doanh nghiệp Wookbee</h4>
-            <p class="project-tech">
-              React, TypeScript, Redux, GraphQL, SCSS Pattern 7-1
-            </p>
-            <p class="project-desc">
-              Xây dựng hệ thống quản trị doanh nghiệp với React và TypeScript.
-              Tích hợp API và xử lý dữ liệu phức tạp. Sản phẩm đã 3 lần liên
-              tiếp nhận giải thưởng Sao Khuê.
-              <a
-                href="https://work-bee.net/vi"
-                target="_blank"
-                class="project-link"
-              >
-                <i class="fas fa-external-link-alt"></i> Xem sản phẩm
-              </a>
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Education Section -->
+      <!-- Học vấn -->
       <section class="section">
         <h3 class="section-title">
           <i class="fas fa-graduation-cap"></i>
